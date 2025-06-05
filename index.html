@@ -5,49 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sagor Kumar Mitra - Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-        }
-        .smooth-scroll {
             scroll-behavior: smooth;
+        }
+        .section-title {
+            @apply text-3xl font-semibold text-gray-800 mb-8 pb-2 border-b-2 border-sky-500;
+        }
+        .card {
+            @apply bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300;
+        }
+        .tag {
+            @apply bg-sky-100 text-sky-700 px-3 py-1 rounded-full text-sm font-medium;
+        }
+        /* Custom scrollbar for a more modern feel (optional) */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        /* Animation for sections on scroll (simple fade-in) */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-800 smooth-scroll">
-    <!-- Navbar -->
-    <nav class="bg-white shadow-md fixed w-full top-0 z-10">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <h1 class="text-2xl font-bold text-gray-900">Sagor Kumar Mitra</h1>
+<body class="bg-gray-50 text-gray-700 antialiased">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <a href="#" class="text-2xl font-bold text-sky-600">Sagor Kumar Mitra</a>
+                <div class="hidden md:flex space-x-4">
+                    <a href="#about" class="text-gray-600 hover:text-sky-500 transition-colors">About</a>
+                    <a href="#skills" class="text-gray-600 hover:text-sky-500 transition-colors">Skills</a>
+                    <a href="#portfolio" class="text-gray-600 hover:text-sky-500 transition-colors">Portfolio</a>
+                    <a href="#experience" class="text-gray-600 hover:text-sky-500 transition-colors">Experience</a>
+                    <a href="#education" class="text-gray-600 hover:text-sky-500 transition-colors">Education</a>
+                    <a href="#contact" class="text-gray-600 hover:text-sky-500 transition-colors">Contact</a>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <a href="#about" class="text-gray-600 hover:text-blue-600">About</a>
-                    <a href="#skills" class="text-gray-600 hover:text-blue-600">Skills</a>
-                    <a href="#experience" class="text-gray-600 hover:text-blue-600">Experience</a>
-                    <a href="#projects" class="text-gray-600 hover:text-blue-600">Projects</a>
-                    <a href="#education" class="text-gray-600 hover:text-blue-600">Education</a>
-                    <a href="#contact" class="text-gray-600 hover:text-blue-600">Contact</a>
+                <div class="md:hidden">
+                    <button id="nav-toggle" class="text-gray-600 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
                 </div>
+            </div>
+            <!-- Mobile Navigation Menu -->
+            <div id="nav-menu-mobile" class="hidden md:hidden mt-3">
+                <a href="#about" class="block py-2 px-4 text-sm text-gray-600 hover:bg-sky-50 rounded-md">About</a>
+                <a href="#skills" class="block py-2 px-4 text-sm text-gray-600 hover:bg-sky-50 rounded-md">Skills</a>
+                <a href="#portfolio" class="block py-2 px-4 text-sm text-gray-600 hover:bg-sky-50 rounded-md">Portfolio</a>
+                <a href="#experience" class="block py-2 px-4 text-sm text-gray-600 hover:bg-sky-50 rounded-md">Experience</a>
+                <a href="#education" class="block py-2 px-4 text-sm text-gray-600 hover:bg-sky-50 rounded-md">Education</a>
+                <a href="#contact" class="block py-2 px-4 text-sm text-gray-600 hover:bg-sky-50 rounded-md">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="about" class="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
-        <div class="text-center max-w-5xl mx-auto px-4">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4">Hi, I'm Sagor Kumar Mitra</h2>
-            <p class="text-lg md:text-xl mb-6">A passionate Mechanical Engineer and AI/ML enthusiast with expertise in Python, Django, and machine learning. I blend engineering precision with innovative software solutions to create impactful projects.</p>
-            <a href="#contact" class="inline-block bg-white text-blue-600 font-semibold py-2 px-4 rounded-lg hover:bg-gray-200 transition">Get in Touch</a>
+    <header id="about" class="bg-sky-600 text-white py-20 md:py-32 animate-on-scroll">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Sagor Kumar Mitra</h1>
+            <p class="text-lg md:text-2xl mb-8 text-sky-100">Mechanical Engineer | AI/ML Enthusiast | Web Developer</p>
+            <p class="max-w-2xl mx-auto text-sky-200 mb-8">
+                Driven and versatile professional with a background in Mechanical Engineering, now passionately exploring the realms of Artificial Intelligence, Machine Learning, and Web Development. Eager to leverage a diverse skill set to contribute to innovative projects.
+            </p>
+            <a href="#contact" class="bg-white text-sky-600 font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-sky-50 transition-colors text-lg">Get in Touch</a>
         </div>
-    </section>
+    </header>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-16 bg-white">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-8">Skills</h2>
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-16 animate-on-scroll">
+            <h2 class="section-title text-center">My Skillset</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 <div class="bg-gray-100 p-4 rounded-lg shadow-md text-center">Python (DSA, AI/ML, Web Dev, Blockchain)</div>
                 <div class="bg-gray-100 p-4 rounded-lg shadow-md text-center">JavaScript</div>
@@ -60,121 +111,249 @@
                 <div class="bg-gray-100 p-4 rounded-lg shadow-md text-center">Google Cloud Platform, Docker</div>
                 <div class="bg-gray-100 p-4 rounded-lg shadow-md text-center">AutoCAD, SolidWorks</div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="py-16 bg-gray-100">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-8">Experience</h2>
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-16 animate-on-scroll">
+            <h2 class="section-title text-center">My Portfolio</h2>
+            <p class="text-center text-gray-600 mb-10">Explore some of my work and profiles on various platforms.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- GitHub -->
+                <a href="https://github.com/skm08" target="_blank" rel="noopener noreferrer" class="card text-center group">
+                    <svg class="w-16 h-16 mx-auto mb-4 text-sky-500 group-hover:text-sky-600 transition-colors" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.074 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12.017C22 6.484 17.522 2 12 2Z" clip-rule="evenodd" /></svg>
+                    <h3 class="text-xl font-semibold text-gray-700 group-hover:text-sky-600 transition-colors">GitHub</h3>
+                    <p class="text-gray-500">Code Repositories & Projects</p>
+                </a>
+                <!-- LeetCode -->
+                <a href="#" target="_blank" rel="noopener noreferrer" class="card text-center group"> <!-- Replace # with actual LeetCode URL -->
+                     <svg class="w-16 h-16 mx-auto mb-4 text-sky-500 group-hover:text-sky-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l-4 4m0 0l-4 4m4-4H6"></path></svg> <!-- Simple code icon for LeetCode -->
+                    <h3 class="text-xl font-semibold text-gray-700 group-hover:text-sky-600 transition-colors">LeetCode</h3>
+                    <p class="text-gray-500">Problem Solving & DSA</p>
+                </a>
+                <!-- Kaggle -->
+                <a href="#" target="_blank" rel="noopener noreferrer" class="card text-center group"> <!-- Replace # with actual Kaggle URL -->
+                    <svg class="w-16 h-16 mx-auto mb-4 text-sky-500 group-hover:text-sky-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg> <!-- Simple chart icon for Kaggle -->
+                    <h3 class="text-xl font-semibold text-gray-700 group-hover:text-sky-600 transition-colors">Kaggle</h3>
+                    <p class="text-gray-500">Data Science & ML Competitions</p>
+                </a>
+                <!-- Dribbble -->
+                <a href="#" target="_blank" rel="noopener noreferrer" class="card text-center group"> <!-- Replace # with actual Dribbble URL -->
+                     <svg class="w-16 h-16 mx-auto mb-4 text-sky-500 group-hover:text-sky-600 transition-colors" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.79 0 3.47-.46 4.97-1.28.09-.05.15-.15.15-.25v-2.09c0-.49-.32-.93-.78-1.07C15.3 17.03 13.71 16.5 12 16.5c-2.48 0-4.5-2.02-4.5-4.5S9.52 7.5 12 7.5c1.71 0 3.3.53 4.35 1.47.16.15.4.19.6.09.23-.11.35-.36.35-.61V6.37c0-.1-.06-.2-.15-.25C15.47 2.46 13.79 2 12 2zm6.73 7.55c-.23.19-.56.18-.77-.03-.98-.93-2.28-1.52-3.71-1.52-1.93 0-3.5 1.57-3.5 3.5s1.57 3.5 3.5 3.5c1.43 0 2.73-.59 3.71-1.52.21-.21.22-.54.03-.77l-.14-.14c-.19-.21-.52-.22-.75-.03-.78.73-1.82 1.21-2.98 1.21-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5c1.16 0 2.2.48 2.98 1.21.23.19.56.18.77-.03l.14-.14z"/></svg>
+                    <h3 class="text-xl font-semibold text-gray-700 group-hover:text-sky-600 transition-colors">Dribbble</h3>
+                    <p class="text-gray-500">Design Portfolio</p>
+                </a>
+                <!-- YouTube -->
+                <a href="#" target="_blank" rel="noopener noreferrer" class="card text-center group"> <!-- Replace # with actual YouTube URL -->
+                    <svg class="w-16 h-16 mx-auto mb-4 text-sky-500 group-hover:text-sky-600 transition-colors" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.78 22 12 22 12s0 3.22-.42 4.814a2.506 2.506 0 0 1-1.768 1.768c-1.594.42-7.812.42-7.812.42s-6.218 0-7.812-.42a2.506 2.506 0 0 1-1.768-1.768C2 15.22 2 12 2 12s0-3.22.42-4.814a2.506 2.506 0 0 1 1.768-1.768C5.782 5 12 5 12 5s6.218 0 7.812.418ZM9.757 15.195l5.728-3.195a.498.498 0 0 0 0-.85L9.757 8.083a.497.497 0 0 0-.757.425v5.935a.497.497 0 0 0 .757.497Z" clip-rule="evenodd" /></svg>
+                    <h3 class="text-xl font-semibold text-gray-700 group-hover:text-sky-600 transition-colors">YouTube</h3>
+                    <p class="text-gray-500">Content Creation</p>
+                </a>
+                <!-- Undergraduate Project -->
+                 <div class="card sm:col-span-2 lg:col-span-3">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Undergraduate Project</h3>
+                    <h4 class="text-lg font-medium text-sky-600 mb-1">Speed Control of Hybrid Car by Using PWM Technique at Speed Limited Zone</h4>
+                    <p class="text-sm text-gray-500 mb-2">Supervised By: Prof. Dr. Mohd. Rafiqul Alam Beg</p>
+                    <p class="text-gray-600">
+                        This project focused on implementing a Pulse Width Modulation (PWM) based speed control system for hybrid vehicles, specifically designed to enforce speed limits in designated zones. It involved design, simulation, and potentially hardware implementation aspects.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-16 animate-on-scroll">
+            <h2 class="section-title text-center">Work Experience</h2>
+            <div class="space-y-12">
+                <!-- Experience Item 1 -->
+                <div class="card flex flex-col md:flex-row">
+                    <div class="md:w-1/4 mb-4 md:mb-0">
+                        <h3 class="text-lg font-semibold text-sky-600">Instructor (Mechanical Engineering)</h3>
+                        <p class="text-sm text-gray-500">The Government of Bangladesh</p>
+                        <p class="text-sm text-gray-500">2024 - Present</p>
+                    </div>
+                    <div class="md:w-3/4 md:pl-6">
+                        <p class="text-gray-600">Serving as an Instructor in Mechanical Engineering within an educational institute under the Government of Bangladesh. Responsibilities include teaching, curriculum development, and student guidance in the Farm Machinery department.</p>
+                    </div>
+                </div>
+                <!-- Experience Item 2 -->
+                <div class="card flex flex-col md:flex-row">
+                     <div class="md:w-1/4 mb-4 md:mb-0">
+                        <h3 class="text-lg font-semibold text-sky-600">Production-In-Charge</h3>
+                        <p class="text-sm text-gray-500">T.K Group of Industries</p>
+                        <p class="text-sm text-gray-500">2021 - 2023</p>
+                    </div>
+                    <div class="md:w-3/4 md:pl-6">
+                        <p class="text-gray-600">Managed production and operations at a Pre-Casting Spun Pile Manufacturing facility. Oversaw daily activities, ensured quality control, and optimized production processes for efficiency.</p>
+                    </div>
+                </div>
+                <!-- Experience Item 3 -->
+                <div class="card flex flex-col md:flex-row">
+                     <div class="md:w-1/4 mb-4 md:mb-0">
+                        <h3 class="text-lg font-semibold text-sky-600">Floor-In-Charge</h3>
+                        <p class="text-sm text-gray-500">NDE Steel Structures Ltd.</p>
+                        <p class="text-sm text-gray-500">2017 - 2021</p>
+                    </div>
+                    <div class="md:w-3/4 md:pl-6">
+                        <p class="text-gray-600">Supervised production and operational activities on the floor of a Pre-Engineered Steel Building company. Focused on maintaining workflow, safety standards, and team coordination.</p>
+                    </div>
+                </div>
+                <!-- Experience Item 4 -->
+                <div class="card flex flex-col md:flex-row">
+                     <div class="md:w-1/4 mb-4 md:mb-0">
+                        <h3 class="text-lg font-semibold text-sky-600">Plant Engineer</h3>
+                        <p class="text-sm text-gray-500">Bangladesh Foundry and Engineering Works Ltd.</p>
+                        <p class="text-sm text-gray-500">2015 - 2017</p>
+                    </div>
+                    <div class="md:w-3/4 md:pl-6">
+                        <p class="text-gray-600">Responsible for plant maintenance, construction, and installation projects. Ensured optimal functioning of machinery and infrastructure.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="py-16 animate-on-scroll">
+            <h2 class="section-title text-center">Educational Qualifications</h2>
             <div class="space-y-8">
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold">Instructor (Mechanical Engineering)</h3>
-                    <p class="text-gray-600">Government of Bangladesh, Educational Institute | 2024 - Present</p>
-                    <p class="mt-2">Teaching and mentoring students in farm machinery and mechanical engineering principles.</p>
-                </div Accommodating extra space on both sides by using max-w-5xl for a narrower content area.
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold">Production-In-Charge</h3>
-                    <p class="text-gray-600">T.K Group of Industries, Pre-Casting Spun Pile Manufacturing | 2021 - 2023</p>
-                    <p class="mt-2">Managed production and operations for spun pile manufacturing, ensuring efficiency and quality.</p>
+                 <!-- Education Item 1 -->
+                <div class="card">
+                    <h3 class="text-lg font-semibold text-sky-600">Postgraduate Diploma (PGD) in ICT</h3>
+                    <p class="text-gray-600">Khulna University of Engineering & Technology (KUET)</p>
+                    <p class="text-sm text-gray-500">Ongoing</p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold">Floor-In-Charge</h3>
-                    <p class="text-gray-600">NDE Steel Structures Ltd., Pre-Engineered Steel Building | 2017 - 2021</p>
-                    <p class="mt-2">Oversaw production and operations for pre-engineered steel structures, optimizing workflows.</p>
+                <!-- Education Item 2 -->
+                <div class="card">
+                    <h3 class="text-lg font-semibold text-sky-600">B.Sc. in Mechanical Engineering</h3>
+                    <p class="text-gray-600">Rajshahi University of Engineering & Technology (RUET)</p>
+                    <p class="text-sm text-gray-500">Passed: 2014 | GPA: 2.50 out of 4.0 (2nd Class)</p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold">Plant Engineer</h3>
-                    <p class="text-gray-600">Bangladesh Foundry and Engineering Works Ltd., Machine Installation | 2015 - 2017</p>
-                    <p class="mt-2">Maintained and installed machinery, ensuring operational reliability and safety.</p>
+                <!-- Education Item 3 -->
+                <div class="card">
+                    <h3 class="text-lg font-semibold text-sky-600">Higher Secondary Certificate (H.S.C)</h3>
+                    <p class="text-gray-600">Government P.C. College, Bagerhat (Jessore Board)</p>
+                    <p class="text-sm text-gray-500">Passed: 2008 | GPA: 4.60 out of 5.00</p>
+                </div>
+                <!-- Education Item 4 -->
+                <div class="card">
+                    <h3 class="text-lg font-semibold text-sky-600">Secondary School Certificate (S.S.C)</h3>
+                    <p class="text-gray-600">Suhashini High School, Bagerhat (Jessore Board)</p>
+                    <p class="text-sm text-gray-500">Passed: 2005 | GPA: 4.69 out of 5.00</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-16 bg-white">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-8">Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-gray-100 p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold">Speed Control of Hybrid Car Using PWM</h3>
-                    <p class="text-gray-600">Technologies: PWM, Mechanical Engineering</p>
-                    <p class="mt-2">Developed a system to control hybrid car speed in speed-limited zones using Pulse Width Modulation under the supervision of Prof. Dr. Mohd. Rafiqul Alam Beg at RUET.</p>
-                </div>
-                <div class="bg-gray-100 p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold">Portfolio Projects</h3>
-                    <p class="text-gray-600">Technologies: Python, Django, AI/ML, JavaScript</p>
-                    <p class="mt-2">Explore my work on AI/ML, web development, and blockchain projects showcased on GitHub and Kaggle.</p>
-                    <a href="https://github.com/skm08" class="text-blue-600 hover:underline">View on GitHub</a>
-                    <a href="https://kaggle.com/yourprofile" class="text-blue-600 hover:underline ml-4">View on Kaggle</a>
+        <!-- Extracurricular Activities -->
+        <section id="activities" class="py-16 animate-on-scroll">
+            <h2 class="section-title text-center">Interests & Activities</h2>
+            <div class="card">
+                 <p class="text-gray-600 text-center leading-relaxed">
+                    Beyond my professional and academic pursuits, I am actively involved in:
+                </p>
+                <div class="flex flex-wrap justify-center gap-3 mt-6">
+                    <span class="bg-teal-100 text-teal-700 px-4 py-2 rounded-full text-md font-medium">Hackathons & Coding Competitions</span>
+                    <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-md font-medium">Mechanical Design Projects</span>
+                    <span class="bg-pink-100 text-pink-700 px-4 py-2 rounded-full text-md font-medium">Content Creation</span>
+                    <span class="bg-amber-100 text-amber-700 px-4 py-2 rounded-full text-md font-medium">Playing Guitar</span>
+                    <span class="bg-green-100 text-green-700 px-4 py-2 rounded-full text-md font-medium">Social Activism</span>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Education Section -->
-    <section id="education" class="py-16 bg-gray-100">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-8">Education</h2>
-            <div class="space-y-8">
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold">PGD in ICT</h3>
-                    <p class="text-gray-600">Khulna University of Engineering & Technology (KUET) | Ongoing</p>
-                    <p class="mt-2">Pursuing advanced studies in Information and Communication Technology.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold">B.Sc. in Mechanical Engineering</h3>
-                    <p class="text-gray-600">Rajshahi University of Engineering & Technology (RUET) | 2014</p>
-                    <p class="mt-2">Graduated with a 2nd Class (2.50/4.0), focused on mechanical systems and engineering design.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold">H.S.C.</h3>
-                    <p class="text-gray-600">Government P.C. College, Bagerhat | 2008</p>
-                    <p class="mt-2">Achieved a GPA of 4.60/5.00.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold">S.S.C.</h3>
-                    <p class="text-gray-600">Suhashini High School, Bagerhat | 2005</p>
-                    <p class="mt-2">Achieved a GPA of 4.69/5.00.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-white">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-8">Contact</h2>
-            <p class="text-center mb-6">Feel free to reach out via email or connect with me on social platforms.</p>
-            <div class="flex justify-center space-x-6">
-                <a href="mailto:sagor.ruet@gmail.com" class="text-blue-600 hover:text-blue-800">Email</a>
-                <a href="https://github.com/skm08" class="text-blue-600 hover:text-blue-800">GitHub</a>
-                <a href="https://leetcode.com/yourprofile" class="text-blue-600 hover:text-blue-800">LeetCode</a>
-                <a href="https://kaggle.com/yourprofile" class="text-blue-600 hover:text-blue-800">Kaggle</a>
-                <a href="https://dribbble.com/yourprofile" class="text-blue-600 hover:text-blue-800">Dribbble</a>
-                <a href="https://youtube.com/yourprofile" class="text-blue-600 hover:text-blue-800">YouTube</a>
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 bg-gray-100 animate-on-scroll">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-center">Let's Connect</h2>
+                <p class="text-center text-gray-600 mb-10">
+                    I'm always open to discussing new projects, creative ideas, or opportunities to be part of something great.
+                </p>
+                <div class="max-w-lg mx-auto card">
+                    <div class="flex items-center mb-4">
+                        <svg class="w-6 h-6 text-sky-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        <a href="mailto:sagor.ruet@gmail.com" class="text-sky-600 hover:underline">sagor.ruet@gmail.com</a>
+                    </div>
+                    <div class="flex items-center mb-4">
+                        <svg class="w-6 h-6 text-sky-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.308 1.154a11.06 11.06 0 005.416 5.416l1.154-2.308a1 1 0 011.21-.502l4.493 1.498A1 1 0 0119 12.72V16a2 2 0 01-2 2h-1C9.716 18 3 11.284 3 5z"></path></svg>
+                        <a href="tel:+8801722276504" class="text-sky-600 hover:underline">+880 1722-276504</a>
+                    </div>
+                     <div class="flex items-center">
+                        <svg class="w-6 h-6 text-sky-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        <p class="text-gray-600">Bagerhat, Bangladesh</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-6">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p>© 2025 Sagor Kumar Mitra. All rights reserved.</p>
+    <footer class="bg-gray-800 text-gray-300 py-8 text-center">
+        <div class="container mx-auto px-6">
+            <p>&copy; <span id="currentYear"></span> Sagor Kumar Mitra. All Rights Reserved.</p>
+            <p class="text-sm mt-1">Crafted with ❤️ and Tailwind CSS.</p>
         </div>
     </footer>
 
-    <!-- JavaScript for smooth scrolling -->
     <script>
+        // Mobile navigation toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenuMobile = document.getElementById('nav-menu-mobile');
+        if (navToggle && navMenuMobile) {
+            navToggle.addEventListener('click', () => {
+                navMenuMobile.classList.toggle('hidden');
+            });
+        }
+
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    // If it's a mobile nav link, close the menu
+                    if (navMenuMobile && !navMenuMobile.classList.contains('hidden')) {
+                         navMenuMobile.classList.add('hidden');
+                    }
+                }
             });
         });
+
+        // Animation on scroll
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Optional: Unobserve after animation to save resources
+                    // observer.unobserve(entry.target);
+                } else {
+                    // Optional: Remove class if you want animation to repeat when scrolling out and back in
+                    // entry.target.classList.remove('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        animatedElements.forEach(el => {
+            observer.observe(el);
+        });
+
+        // Placeholder for portfolio links - remind user to update
+        // You'll need to replace the '#' in the anchor tags in the HTML for:
+        // - LeetCode profile URL
+        // - Kaggle profile URL
+        // - Dribbble profile URL
+        // - YouTube channel URL
+        // Example: <a href="https://www.leetcode.com/yourusername" ...>
+        // The GitHub link is already set to skm08.
+
     </script>
 </body>
 </html>
